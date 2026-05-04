@@ -2,7 +2,6 @@ FROM maven:3.9.0-eclipse-temurin-17 as build
 WORKDIR /app
 COPY . .
 RUN mvn clean install
-RUN apt update -y
 
 FROM eclipse-temurin:17.0.6_10-jdk
 WORKDIR /app
