@@ -24,7 +24,7 @@ pipeline{
     
         stage("Checkout from SCM"){
             steps {
-                git branch: 'main', credentialsId: 'github', url: 'https://github.com/dmancloud/complete-prodcution-e2e-pipeline'
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/yogeshmrajpure-design/complete-prodcution-e2e-pipeline.git'
             }
 
         }
@@ -113,12 +113,12 @@ pipeline{
         failure {
             emailext body: '''${SCRIPT, template="groovy-html.template"}''', 
                     subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Failed", 
-                    mimeType: 'text/html',to: "dmistry@yourhostdirect.com"
+                    mimeType: 'text/html',to: "yogeshmrajpure@gmail.com"
             }
          success {
                emailext body: '''${SCRIPT, template="groovy-html.template"}''', 
                     subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Successful", 
-                    mimeType: 'text/html',to: "dmistry@yourhostdirect.com"
+                    mimeType: 'text/html',to: "yogeshmrajpure@gmail.com"
           }      
     }
 }
