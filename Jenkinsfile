@@ -101,11 +101,25 @@ pipeline{
         stage("Trigger CD Pipeline") {
             steps {
                 script {
-                    sh "curl -v -k --user admin:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' 'https://jenkins.dev.dman.cloud/job/gitops-complete-pipeline/buildWithParameters?token=gitops-token'"
+                    echo "This is Trigger CD Pipeline Stage"
+                    //sh "curl -v -k --user admin:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' 'https://jenkins.dev.dman.cloud/job/gitops-complete-pipeline/buildWithParameters?token=gitops-token'"
                 }
             }
 
         }
 
     }
+    
+    //post {
+    //    failure {
+    //        emailext body: '''${SCRIPT, template="groovy-html.template"}''', 
+    //                subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Failed", 
+    //                mimeType: 'text/html',to: "yogeshmrajpure@gmail.com"
+    //        }
+    //     success {
+    //           emailext body: '''${SCRIPT, template="groovy-html.template"}''', 
+    //                subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Successful", 
+    //                mimeType: 'text/html',to: "yogeshmrajpure@gmail.com"
+    //      }      
+    //}
 }
