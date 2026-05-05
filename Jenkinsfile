@@ -24,7 +24,8 @@ pipeline{
     
         stage("Checkout from SCM"){
             steps {
-                //git branch: 'main', credentialsId: 'github', url: 'https://github.com/yogeshmrajpure-design/complete-prodcution-e2e-pipeline.git'
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/yogeshmrajpure-design/complete-prodcution-e2e-pipeline.git'
+                checkout scm
                 echo "This is Checkout from SCM Stage Done Successfully"
             }
 
