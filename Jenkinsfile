@@ -25,6 +25,7 @@ pipeline{
         stage("Checkout from SCM"){
             steps {
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/yogeshmrajpure-design/complete-prodcution-e2e-pipeline.git'
+                echo "This is Checkout from SCM Stage Done Successfully"
             }
 
         }
@@ -32,6 +33,7 @@ pipeline{
         stage("Build Application"){
             steps {
                 sh "mvn clean package"
+                echo "This is Build Application Stage Done Successfully"
             }
 
         }
@@ -39,6 +41,7 @@ pipeline{
         stage("Test Application"){
             steps {
                 sh "mvn test"
+                echo "This is Test Application Stage Done Successfully"
             }
 
         }
@@ -48,6 +51,7 @@ pipeline{
                 script {
                     withSonarQubeEnv(credentialsId: 'jenkins-sonarqube-token') {
                         sh "mvn sonar:sonar"
+                        echo "This is Sonarqube Analysis Stage Done Successfully"
                     }
                 }
             }
@@ -58,6 +62,7 @@ pipeline{
             steps {
                 script {
                     waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-sonarqube-token'
+                    echo "This is Quality Gate Stage Done Successfully"
                 }
             }
 
